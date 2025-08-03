@@ -30,7 +30,6 @@ export class ProjectService {
           }
         `,
       })
-      .valueChanges
-      .pipe(map(result => result.data.projects));
+      .valueChanges.pipe(map((result) => result.data.projects));
   }
 }

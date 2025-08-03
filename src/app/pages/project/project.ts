@@ -1,9 +1,9 @@
 // src/app/pages/project/project.ts
 import { Component, inject } from '@angular/core';
 import { Guest } from '../../layouts/guest/guest';
-import {ProjectService, ProjectType} from '../../services/project-service';
+import { ProjectService, ProjectType } from '../../services/project-service';
 import { Observable } from 'rxjs';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-project',
@@ -13,5 +13,6 @@ import {CommonModule} from '@angular/common';
 })
 export class Project {
   private readonly projectService = inject(ProjectService);
-  public projects$: Observable<ProjectType[]> = this.projectService.getProjects();
+  public projects$: Observable<ProjectType[]> =
+    this.projectService.getProjects();
 }
