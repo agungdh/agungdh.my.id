@@ -20,9 +20,11 @@ export class Project implements OnInit {
       .watchQuery({
         query: gql`
           {
-            rates(currency: "USD") {
-              currency
-              rate
+            projects {
+              id
+              releaseDate
+              description
+              name
             }
           }
         `,
