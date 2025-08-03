@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import {Index} from './pages/index';
-import {Tehe} from './pages/tehe/tehe';
+import {Project} from './pages/project/project';
 
 export const routes: Routes = [
   {
@@ -8,7 +8,7 @@ export const routes: Routes = [
     component: Index
   },
   {
-    path: 'tehe',
-    component: Tehe
+    path: 'project',
+    component: Project
   }
 ];

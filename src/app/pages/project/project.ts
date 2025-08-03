@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import {Guest} from "../../layouts/guest/guest";
 
 @Component({
-  selector: 'app-tehe',
+  selector: 'app-project',
     imports: [
         Guest
     ],
-  templateUrl: './tehe.html',
-  styleUrl: './tehe.css'
+  templateUrl: './project.html',
+  styleUrl: './project.css'
 })
-export class Tehe {
+export class Project {
 
 }
