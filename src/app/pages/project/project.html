@@ -1,3 +1,15 @@
 <app-guest>
-  <h1 class="text-3xl font-bold mb-4">Project</h1>
+  <ng-container *ngIf="projects$ | async as projects; else loading">
+    <ul>
+      <li *ngFor="let p of projects">
+        <h3 class="font-bold">{{ p.name }}</h3>
+        <p>{{ p.description }}</p>
+        <small class="text-sm text-gray-500">{{ p.releaseDate }}</small>
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>Loading projects…</p>
+  </ng-template>
 </app-guest>

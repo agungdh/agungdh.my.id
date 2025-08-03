@@ -1,26 +1,36 @@
-import {inject, Injectable} from '@angular/core';
-import {gql} from '@apollo/client';
-import {Apollo} from 'apollo-angular';
+// src/app/services/project-service.ts
+import { inject, Injectable } from '@angular/core';
+import { gql } from '@apollo/client';
+import { Apollo, QueryRef } from 'apollo-angular';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+export interface ProjectType {
+  id: string;
+  name: string;
+  description: string;
+  releaseDate: string;
+}
+
+@Injectable({ providedIn: 'root' })
 export class ProjectService {
   private readonly apollo: Apollo = inject(Apollo);
 
-  public getProjects() {
+  public getProjects(): Observable<ProjectType[]> {
     return this.apollo
-      .watchQuery({
+      .watchQuery<{ projects: ProjectType[] }>({
         query: gql`
-          {
+          query {
             projects {
               id
-              releaseDate
-              description
               name
+              description
+              releaseDate
             }
           }
         `,
       })
+      .valueChanges
+      .pipe(map(result => result.data.projects));
   }
 }
