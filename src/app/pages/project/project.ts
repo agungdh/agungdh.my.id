@@ -3,6 +3,7 @@ import { Guest } from '../../layouts/guest/guest';
 import { HttpClient } from '@angular/common/http';
 import { Apollo } from 'apollo-angular';
 import { gql } from '@apollo/client';
+import {ProjectService} from '../../services/project-service';
 
 @Component({
   selector: 'app-project',
@@ -11,24 +12,9 @@ import { gql } from '@apollo/client';
   styleUrl: './project.css',
 })
 export class Project implements OnInit {
-  private readonly apollo: Apollo = inject(Apollo);
+  private readonly projectService: ProjectService = inject(ProjectService);
 
   ngOnInit() {
-    this.apollo
-      .watchQuery({
-        query: gql`
-          {
-            projects {
-              id
-              releaseDate
-              description
-              name
-            }
-          }
-        `,
-      })
-      .valueChanges.subscribe((result: any) => {
-        console.log(result);
-      });
+    this.projectService.getProjects()
   }
 }
