@@ -29,6 +29,10 @@ export const appConfig: ApplicationConfig = {
       return {
         link: inject(HttpLink).create({ uri: environment.graphqlUri }),
         cache: new InMemoryCache(),
+        defaultOptions: {
+          watchQuery: { fetchPolicy: 'network-only' },
+          query: { fetchPolicy: 'network-only' },
+        },
       };
     }),
   ],
